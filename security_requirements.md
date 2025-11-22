@@ -37,4 +37,4 @@
 | - Deployment in an orchestration tool (AWS EKS, Azure AKS) | ? |
 | - Threat recognition (Azure Sentinel), attack simulation | ? |
 | - Identity management, SSO (Azure AD B2C) | ? |
-| - Project presenation | ? |
+| Project presenation | ? |
