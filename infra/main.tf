@@ -98,14 +98,14 @@ resource "azurerm_container_app" "backend" {
   }
 
   secret {
-    name  = "acr-password-secret"
+    name  = "backend-acr-password-secret"
     value = azurerm_container_registry.acr.admin_password
   }
 
   registry {
     server   = azurerm_container_registry.acr.login_server
     username = azurerm_container_registry.acr.admin_username
-    password_secret_name = "acr-password-secret"
+    password_secret_name = "backend-acr-password-secret"
   }
 
   ingress {
