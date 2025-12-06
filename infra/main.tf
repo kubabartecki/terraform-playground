@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "main" {
   name     = "terra-rg"
-  location = "germanywestcentral"
+  location = "polandcentral"
 }
 
 ###################### db ######################
@@ -74,7 +74,7 @@ resource "azurerm_container_app" "backend" {
   template {
     container {
       name   = "terra-back-container"
-      image  = "${azurerm_container_registry.acr.login_server}/terra-back:v1.4" // todo?
+      image  = "${azurerm_container_registry.acr.login_server}/terra-back:v1.0"
       cpu    = 1.0
       memory = "2.0Gi"
 
@@ -130,13 +130,13 @@ resource "azurerm_container_app" "frontend" {
   template {
     container {
       name   = "terra-front-container"
-      image  = "${azurerm_container_registry.acr.login_server}/terra-front:v1.1"
+      image  = "${azurerm_container_registry.acr.login_server}/terra-front:v1.0"
       cpu    = 1.0
       memory = "2.0Gi"
 
       env {
         name  = "REACT_APP_API_URL"
-        value = "todo/api/v1/terra" # todo 
+        value = "https://${azurerm_container_app.backend.ingress[0].fqdn}/api/v1/terra"
       }
     }
   }
